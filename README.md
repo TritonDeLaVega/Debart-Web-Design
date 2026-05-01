@@ -35,6 +35,8 @@ Le projet utilise un stack simple, propre et efficace :
 ---
 
 ## 📁 Structure du projet
+
+
 Debart-Web-Design/
 │
 ├── assets/
