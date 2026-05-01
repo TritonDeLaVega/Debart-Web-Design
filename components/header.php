@@ -4,8 +4,7 @@
 <header class="site-header">
     <div class="site-header__inner">
         <a href="#home" class="site-header__brand">
-            <img src="assets/img/dwd-logo.png" alt="Debart Web Design logo">
-            <span>DWD</span>
+            <img src="assets/img/BonLogoDWD.svg" alt="Debart Web Design logo">
         </a>
 
         <button class="site-header__toggle" aria-label="Ouvrir le menu">

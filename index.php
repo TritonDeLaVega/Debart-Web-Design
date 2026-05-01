@@ -33,7 +33,7 @@
             </div>
             <div class="hero__visual">
                 <div class="hero__logo-card">
-                    <img src="assets/img/dwd-logo.png" alt="Logo Debart Web Design" class="hero__logo">
+                    <img src="assets/img/BonLogoDWD.svg" alt="Logo Debart Web Design" class="hero__logo">
                     <p class="hero__tagline">Code propre. Design soigné. Vision long terme.</p>
                 </div>
             </div>

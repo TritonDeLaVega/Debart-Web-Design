@@ -553,3 +553,11 @@ main {
     opacity: 1;
     transform: translateY(0);
 }
+.site-header__brand img {
+    height: 60px;   // augmente si tu veux
+    width: auto;
+}
+.site-header__brand {
+    display: flex;
+    align-items: center;
+}
