@@ -1,8 +1,9 @@
 <?php
-    // index.php
+// index.php
 ?>
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <title>Debart Web Design | DWD</title>
@@ -10,6 +11,7 @@
     <meta name="description" content="Debart Web Design - Développeur full-stack bilingue, sites modernes et performants, France ↔ Philippines.">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
+
 <body>
     <?php include 'components/header.php'; ?>
 
@@ -23,7 +25,7 @@
                     <span>créatif & fiable</span>
                 </h1>
                 <p class="hero__subtitle">
-                    Sites web modernes, performants et sur‑mesure.  
+                    Sites web modernes, performants et sur‑mesure.
                     Bilingue français / anglais — basé entre l’Europe et les Philippines.
                 </p>
                 <div class="hero__actions">
@@ -49,17 +51,17 @@
                 <div class="about__grid">
                     <div class="about__text">
                         <p>
-                            Je m’appelle Jonathan Debart. Je conçois et développe des sites web 
+                            Je m’appelle Jonathan Debart. Je conçois et développe des sites web
                             qui allient <strong>clarté, performance et identité visuelle forte</strong>.
                         </p>
                         <p>
-                            Bilingue français / anglais et basé aux Philippines, je propose une 
-                            collaboration fluide avec les entreprises européennes tout en 
-                            bénéficiant d’un coût de vie plus bas — ce qui me permet d’offrir 
+                            Bilingue français / anglais et basé aux Philippines, je propose une
+                            collaboration fluide avec les entreprises européennes tout en
+                            bénéficiant d’un coût de vie plus bas — ce qui me permet d’offrir
                             un excellent <strong>rapport qualité / prix</strong>.
                         </p>
                         <p>
-                            Mon approche : un code propre, maintenable, et un design qui 
+                            Mon approche : un code propre, maintenable, et un design qui
                             reflète vraiment votre marque.
                         </p>
                     </div>
@@ -92,28 +94,28 @@
                     <article class="service-card">
                         <h3>Sites vitrines modernes</h3>
                         <p>
-                            Conception et développement de sites vitrines responsive, 
+                            Conception et développement de sites vitrines responsive,
                             pensés pour être rapides, clairs et convaincants.
                         </p>
                     </article>
                     <article class="service-card">
                         <h3>Intégration & front‑end</h3>
                         <p>
-                            Intégration pixel‑perfect à partir de maquettes ou de zéro, 
+                            Intégration pixel‑perfect à partir de maquettes ou de zéro,
                             animations légères, expérience utilisateur fluide.
                         </p>
                     </article>
                     <article class="service-card">
                         <h3>Back‑end & logique métier</h3>
                         <p>
-                            PHP, MySQL, formulaires avancés, gestion de contenu, 
+                            PHP, MySQL, formulaires avancés, gestion de contenu,
                             fonctionnalités sur‑mesure.
                         </p>
                     </article>
                     <article class="service-card">
                         <h3>Optimisation & refonte</h3>
                         <p>
-                            Amélioration de sites existants : performance, responsive, 
+                            Amélioration de sites existants : performance, responsive,
                             structure du code, SEO technique.
                         </p>
                     </article>
@@ -136,10 +138,14 @@
                         <div class="portfolio-card__body">
                             <h3>Fallout Fans</h3>
                             <p>
-                                Site de fans développé from scratch avec XAMPP. 
-                                Mise en place d’une architecture propre, gestion des routes, 
+                                Site de fans développé from scratch avec XAMPP.
+                                Mise en place d’une architecture propre, gestion des routes,
                                 et intégration front‑end personnalisée.
                             </p>
+                            <a href="https://github.com/TritonDeLaVega/FalloutFansite" target="_blank" class="btn-github">
+                                Voir le code sur GitHub
+                            </a>
+
                         </div>
                     </article>
                     <article class="portfolio-card">
@@ -149,7 +155,7 @@
                         <div class="portfolio-card__body">
                             <h3>Debart Web Design</h3>
                             <p>
-                                Ce site lui‑même : vitrine professionnelle, design sérieux 
+                                Ce site lui‑même : vitrine professionnelle, design sérieux
                                 et artistique, code organisé et versionné sur GitHub.
                             </p>
                         </div>
@@ -168,12 +174,12 @@
                 <div class="contact__grid">
                     <div class="contact__text">
                         <p>
-                            Un site à créer, une refonte à envisager, ou simplement une idée 
-                            à clarifier ? Envoyez‑moi quelques lignes et je vous réponds 
+                            Un site à créer, une refonte à envisager, ou simplement une idée
+                            à clarifier ? Envoyez‑moi quelques lignes et je vous réponds
                             rapidement avec des pistes concrètes.
                         </p>
                         <ul class="contact__list">
-                            <li><strong>Email :</strong> à renseigner</li>
+                            <li><strong>Email :</strong> debartwebdesign@gmail.com</li>
                             <li><strong>GitHub :</strong> TritonDeLaVega</li>
                             <li><strong>Basé à :</strong> Dauis, Bohol, Philippines</li>
                         </ul>
@@ -203,4 +209,5 @@
 
     <script src="assets/js/main.js"></script>
 </body>
+
 </html>
