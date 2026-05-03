@@ -49,4 +49,30 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     setInterval(changeSlide, 5000); // toutes les 5 secondes
+
+
+    // Réseau d’énergie complet
+    const flow = document.createElement("div");
+    flow.className = "energy-flow";
+    document.body.appendChild(flow);
+
+    // 5 serpents
+    for (let i = 0; i < 5; i++) {
+        const wave = document.createElement("div");
+        wave.className = "energy-wave";
+        flow.appendChild(wave);
+    }
+
+    // Particules
+    const particleCount = 60;
+    for (let i = 0; i < particleCount; i++) {
+        const p = document.createElement("div");
+        p.className = "particle";
+        p.style.top = 40 + Math.random() * 20 + "vh";
+        p.style.left = Math.random() * 100 + "vw";
+        p.style.animationDuration = 4 + Math.random() * 6 + "s";
+        p.style.animationDelay = Math.random() * 8 + "s";
+        flow.appendChild(p);
+    }
+
 });
