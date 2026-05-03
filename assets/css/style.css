@@ -587,12 +587,9 @@ main {
 
 .energy-flow {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
     overflow: hidden;
-    z-index: 0;
+    z-index: -1;
     pointer-events: none;
     animation: swirl 8s ease-in-out infinite;
 }
@@ -604,146 +601,31 @@ main {
     75%  { transform: translateY(-5px) rotate(0.5deg); }
     100% { transform: translateY(0px) rotate(0deg); }
 }
-.energy-wave {
-    position: absolute;
-    left: -20%;
-    width: 140%;
-    height: 6px;
-    background: linear-gradient(90deg, transparent, #00eaff, #00bcd4, transparent);
-    filter: blur(8px);
-    opacity: 0.85;
+
+.energy-flow svg {
+    width: 100%;
+    height: 100%;
 }
 
-.energy-wave:nth-child(1) {
-    top: 50%;
-    animation: serpent1 7s ease-in-out infinite;
+/* Serpents : cœur blanc, aura turquoise */
+.snake {
+    fill: none;
+    stroke: #ffffff;
+    stroke-width: 3;
+    stroke-linecap: round;
+    filter:
+        drop-shadow(0 0 4px #00eaff)
+        drop-shadow(0 0 14px #00eaff)
+        drop-shadow(0 0 30px #00eaff);
+    opacity: 0.95;
 }
 
-@keyframes serpent1 {
-    0% {
-        clip-path: polygon(
-            0% 50%, 10% 40%, 20% 60%, 30% 35%, 40% 65%,
-            50% 30%, 60% 70%, 70% 40%, 80% 60%, 90% 45%, 100% 50%
-        );
-    }
-    50% {
-        clip-path: polygon(
-            0% 50%, 10% 60%, 20% 40%, 30% 70%, 40% 35%,
-            50% 75%, 60% 30%, 70% 65%, 80% 35%, 90% 55%, 100% 50%
-        );
-    }
-    100% {
-        clip-path: polygon(
-            0% 50%, 10% 40%, 20% 60%, 30% 35%, 40% 65%,
-            50% 30%, 60% 70%, 70% 40%, 80% 60%, 90% 45%, 100% 50%
-        );
-    }
-}
+.snake.s2 { opacity: 0.8; }
+.snake.s3 { opacity: 0.85; }
+.snake.s4 { opacity: 1; }
+.snake.s5 { opacity: 0.75; }
 
-.energy-wave:nth-child(2) {
-    top: 46%;
-    animation: serpent2 5s ease-in-out infinite;
-}
-
-@keyframes serpent2 {
-    0% {
-        clip-path: polygon(
-            0% 50%, 10% 55%, 20% 35%, 30% 65%, 40% 30%,
-            50% 70%, 60% 40%, 70% 60%, 80% 45%, 90% 55%, 100% 50%
-        );
-    }
-    50% {
-        clip-path: polygon(
-            0% 50%, 10% 35%, 20% 65%, 30% 30%, 40% 70%,
-            50% 35%, 60% 75%, 70% 40%, 80% 65%, 90% 45%, 100% 50%
-        );
-    }
-    100% {
-        clip-path: polygon(
-            0% 50%, 10% 55%, 20% 35%, 30% 65%, 40% 30%,
-            50% 70%, 60% 40%, 70% 60%, 80% 45%, 90% 55%, 100% 50%
-        );
-    }
-}
-
-.energy-wave:nth-child(3) {
-    top: 54%;
-    animation: serpent3 6s ease-in-out infinite;
-}
-
-@keyframes serpent3 {
-    0% {
-        clip-path: polygon(
-            0% 50%, 10% 30%, 20% 70%, 30% 25%, 40% 75%,
-            50% 20%, 60% 80%, 70% 35%, 80% 65%, 90% 40%, 100% 50%
-        );
-    }
-    50% {
-        clip-path: polygon(
-            0% 50%, 10% 70%, 20% 30%, 30% 75%, 40% 25%,
-            50% 80%, 60% 20%, 70% 65%, 80% 35%, 90% 60%, 100% 50%
-        );
-    }
-    100% {
-        clip-path: polygon(
-            0% 50%, 10% 30%, 20% 70%, 30% 25%, 40% 75%,
-            50% 20%, 60% 80%, 70% 35%, 80% 65%, 90% 40%, 100% 50%
-        );
-    }
-}
-
-.energy-wave:nth-child(4) {
-    top: 48%;
-    animation: serpent4 4s ease-in-out infinite;
-}
-
-@keyframes serpent4 {
-    0% {
-        clip-path: polygon(
-            0% 50%, 10% 45%, 20% 55%, 30% 40%, 40% 60%,
-            50% 45%, 60% 55%, 70% 40%, 80% 60%, 90% 45%, 100% 50%
-        );
-    }
-    50% {
-        clip-path: polygon(
-            0% 50%, 10% 55%, 20% 45%, 30% 60%, 40% 40%,
-            50% 55%, 60% 45%, 70% 60%, 80% 40%, 90% 55%, 100% 50%
-        );
-    }
-    100% {
-        clip-path: polygon(
-            0% 50%, 10% 45%, 20% 55%, 30% 40%, 40% 60%,
-            50% 45%, 60% 55%, 70% 40%, 80% 60%, 90% 45%, 100% 50%
-        );
-    }
-}
-
-.energy-wave:nth-child(5) {
-    top: 52%;
-    animation: serpent5 9s ease-in-out infinite;
-}
-
-@keyframes serpent5 {
-    0% {
-        clip-path: polygon(
-            0% 50%, 10% 25%, 20% 75%, 30% 20%, 40% 80%,
-            50% 15%, 60% 85%, 70% 30%, 80% 70%, 90% 35%, 100% 50%
-        );
-    }
-    50% {
-        clip-path: polygon(
-            0% 50%, 10% 75%, 20% 25%, 30% 80%, 40% 20%,
-            50% 85%, 60% 15%, 70% 70%, 80% 30%, 90% 65%, 100% 50%
-        );
-    }
-    100% {
-        clip-path: polygon(
-            0% 50%, 10% 25%, 20% 75%, 30% 20%, 40% 80%,
-            50% 15%, 60% 85%, 70% 30%, 80% 70%, 90% 35%, 100% 50%
-        );
-    }
-}
-
+/* Particules : tu peux garder ta version actuelle, sinon : */
 .particle {
     position: absolute;
     width: 4px;
