@@ -160,6 +160,9 @@
                                 Ce site lui‑même : vitrine professionnelle, design sérieux
                                 et artistique, code organisé et versionné sur GitHub.
                             </p>
+                            <a href="https://github.com/TritonDeLaVega/Debart-Web-Design.git" target="_blank" class="btn-github">
+                                Voir le code sur GitHub
+                            </a>
                         </div>
                     </article>
                 </div>
