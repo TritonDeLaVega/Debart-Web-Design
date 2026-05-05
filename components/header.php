@@ -8,6 +8,9 @@
     <img src="assets/img/RealisticPC.png" class="slide">
 </div>
 
+<div class="background-slider"></div>
+<div class="energy-flow"></div>
+
 <header class="site-header">
     <div class="site-header__inner">
         <a href="#home" class="site-header__brand">

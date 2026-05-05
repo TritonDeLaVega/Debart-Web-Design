@@ -1,11 +1,21 @@
-document.addEventListener('DOMContentLoaded', () => {
+console.log('main.js chargé');
+
+let initialized = false; // 🔒 empêche double init
+
+function init() {
+    if (initialized) return;
+    initialized = true;
 
     // --- Burger menu ---
     const toggle = document.querySelector('.site-header__toggle');
     const nav = document.querySelector('.site-nav');
 
     if (toggle && nav) {
+        console.log('toggle =', toggle);
+        console.log('nav =', nav);
+
         toggle.addEventListener('click', () => {
+            console.log('burger cliqué');
             toggle.classList.toggle('is-open');
             nav.classList.toggle('is-open');
         });
@@ -16,22 +26,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 nav.classList.remove('is-open');
             });
         });
+    } else {
+        console.log('❌ toggle ou nav introuvable');
     }
 
     // --- Scroll reveal ---
     const revealEls = document.querySelectorAll('.section, .service-card, .portfolio-card, .contact__form');
 
-    const observer = new IntersectionObserver(
-        entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        },
-        { threshold: 0.15 }
-    );
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.15 });
 
     revealEls.forEach(el => {
         el.classList.add('will-reveal');
@@ -42,21 +51,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const slides = document.querySelectorAll('.background-slider .slide');
     let current = 0;
 
-    function changeSlide() {
-        slides[current].classList.remove('active');
-        current = (current + 1) % slides.length;
-        slides[current].classList.add('active');
+    if (slides.length > 0) {
+        slides[0].classList.add('active');
+
+        setInterval(() => {
+            slides[current].classList.remove('active');
+            current = (current + 1) % slides.length;
+            slides[current].classList.add('active');
+        }, 5000);
     }
 
-    setInterval(changeSlide, 5000); // toutes les 5 secondes
+    // --- Energy flow ---
+    const flow = document.querySelector(".energy-flow");
 
+    if (!flow) {
+        console.log('❌ .energy-flow introuvable');
+        return;
+    }
 
-    // --- Réseau d’énergie : ondes liquides + particules ---
-    const flow = document.createElement("div");
-    flow.className = "energy-flow";
-    document.body.appendChild(flow);
-
-    // SVG avec 5 paths
     flow.innerHTML = `
 <svg viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid slice">
     <path id="snake1" class="snake s1" d="" />
@@ -68,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
 `;
 
     const svgWidth = 1000;
-    const resolution = 200; // plus = plus fluide
+    const resolution = 200;
 
     const snakes = [
         { id: "snake1", baseY: 300, amp: 40, speed: 0.8 },
@@ -83,7 +95,6 @@ document.addEventListener('DOMContentLoaded', () => {
         for (let i = 0; i <= resolution; i++) {
             const x = (i / resolution) * svgWidth;
 
-            // superposition de 4 vagues continues
             const y =
                 baseY +
                 Math.sin(x * 0.008 - t * speed * 0.002) * amp +
@@ -99,8 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function pointsToPath(points) {
         let d = `M${points[0].x},${points[0].y}`;
         for (let i = 1; i < points.length; i++) {
-            const p = points[i];
-            d += ` L${p.x},${p.y}`;
+            d += ` L${points[i].x},${points[i].y}`;
         }
         return d;
     }
@@ -112,6 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         snakes.forEach(snake => {
             const el = document.getElementById(snake.id);
+            if (!el) return;
             const pts = generateWave(snake.baseY, snake.amp, t, snake.speed);
             el.setAttribute("d", pointsToPath(pts));
         });
@@ -121,8 +132,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     animate();
 
-    // --- Particules ---
+    // --- Particles ---
     const particleCount = 60;
+
     for (let i = 0; i < particleCount; i++) {
         const p = document.createElement("div");
         p.className = "particle";
@@ -132,6 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
         p.style.animationDelay = Math.random() * 8 + "s";
         flow.appendChild(p);
     }
+}
 
-
-});
+// 🔒 Appel unique garanti
+document.addEventListener('DOMContentLoaded', init);

@@ -13,6 +13,8 @@
 </head>
 
 <body>
+    <div class="background-slider"></div>
+    <div class="energy-flow"></div>
     <?php include 'components/header.php'; ?>
 
     <main>
