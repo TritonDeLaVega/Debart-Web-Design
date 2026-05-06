@@ -158,7 +158,8 @@
                             <h3>Debart Web Design</h3>
                             <p>
                                 Ce site lui‑même : vitrine professionnelle, design sérieux
-                                et artistique, code organisé et versionné sur GitHub.
+                                et artistique, sans passer par WordPress, développé via Xampp en local, codé de A à Z.
+                                Code organisé et versionné sur GitHub.
                             </p>
                             <a href="https://github.com/TritonDeLaVega/Debart-Web-Design.git" target="_blank" class="btn-github">
                                 Voir le code sur GitHub
