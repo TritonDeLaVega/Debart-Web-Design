@@ -446,6 +446,7 @@ main {
   margin-top: 0;
   margin-bottom: 1rem;
   color: #b0b3c1;
+  text-shadow: 0 0 6px #000, 0 0 12px #000;
 }
 
 .contact__list {

@@ -165,6 +165,42 @@
                             </a>
                         </div>
                     </article>
+                    <article class="portfolio-card">
+                        <div class="portfolio-card__thumb placeholder-thumb">
+                            <span>Projet #3</span>
+                        </div>
+                        <div class="portfolio-card__body">
+                            <h3>Wolf Soft Eure</h3>
+                            <p>
+                                Ce site est un projet personnel, une refonte complète d'un site déjà existant d'une association d'airsoft,
+                                localisé dans le département de l'Eure en France, et qui à pour but de promouvoir ce loisir,
+                                passer des commandes, planifier les évènements, et proposer un support technique pour le matériel défectueux.
+                                développé sur un thème WordPress entièrement personnalisé.
+                                Code organisé et versionné sur GitHub.
+                            </p>
+                            <a href="https://github.com/TritonDeLaVega/WolfSoftEure.git" target="_blank" class="btn-github">
+                                Voir le code sur GitHub
+                            </a>
+                        </div>
+                    </article>
+                    <article class="portfolio-card">
+                        <div class="portfolio-card__thumb placeholder-thumb">
+                            <span>Projet #4</span>
+                        </div>
+                        <div class="portfolio-card__body">
+                            <h3>Planty</h3>
+                            <p>
+                                Ce site était un exercice durant ma formation, il demandait de recréer fidèlement un site web,
+                                par rapport à une maquette Figma mise à disposition. Le site fait la promotion commerciale d'une boisson 100% naturelle.
+                                Bien que fictive, ce site n'est pas dépourvu d'élégance.
+                                Sur un thème WordPress personnalisé.
+                                Code organisé et versionné sur GitHub.
+                            </p>
+                            <a href="https://github.com/TritonDeLaVega/planty.git" target="_blank" class="btn-github">
+                                Voir le code sur GitHub
+                            </a>
+                        </div>
+                    </article>
                 </div>
             </div>
         </section>
