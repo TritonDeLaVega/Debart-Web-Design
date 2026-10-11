@@ -1,14 +1,14 @@
 <?php
-// index.php
+require_once 'components/translations.php';
 ?>
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="<?= $lang ?>">
 
 <head>
     <meta charset="UTF-8">
-    <title>Debart Web Design | DWD</title>
+    <title><?= t('page_title') ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Debart Web Design - Développeur full-stack bilingue, sites modernes et performants, France ↔ Philippines.">
+    <meta name="description" content="<?= t('page_description') ?>">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
@@ -23,22 +23,21 @@
             <div class="hero__content">
                 <p class="hero__eyebrow">Debart Web Design</p>
                 <h1 class="hero__title">
-                    Développeur full‑stack<br>
-                    <span>créatif & fiable</span>
+                    <?= t('hero_title') ?><br>
+                    <span><?= t('hero_title_highlight') ?></span>
                 </h1>
                 <p class="hero__subtitle">
-                    Sites web modernes, performants et sur‑mesure.
-                    Bilingue français / anglais — basé entre l’Europe et les Philippines.
+                    <?= t('hero_description') ?>
                 </p>
                 <div class="hero__actions">
-                    <a href="#contact" class="btn btn--primary">Discuter d’un projet</a>
-                    <a href="#portfolio" class="btn btn--ghost">Voir les réalisations</a>
+                    <a href="#contact" class="btn btn--primary"><?= t('discuss_project') ?></a>
+                    <a href="#portfolio" class="btn btn--ghost"><?= t('view_projects') ?></a>
                 </div>
             </div>
             <div class="hero__visual">
                 <div class="hero__logo-card">
-                    <img src="assets/img/BonLogoDWD.svg" alt="Logo Debart Web Design" class="hero__logo">
-                    <p class="hero__tagline">Code propre. Design soigné. Vision long terme.</p>
+                    <img src="assets/img/BonLogoDWD.svg" alt="<?= t('logo_alt') ?>" class="hero__logo">
+                    <p class="hero__tagline"><?= t('hero_tagline') ?></p>
                 </div>
             </div>
         </section>
@@ -47,38 +46,40 @@
         <section class="section section--about" id="about">
             <div class="section__inner">
                 <div class="section__header">
-                    <p class="section__eyebrow">À propos</p>
-                    <h2 class="section__title">Qui se cache derrière DWD ?</h2>
+                    <p class="section__eyebrow"><?= t('about') ?></p>
+                    <h2 class="section__title"><?= t('about_heading') ?></h2>
+                    <img
+                        src="assets/img/MoPhotoSuisse.jpg"
+                        alt="Jonathan Debart"
+                        class="about__photo"
+                    >
                 </div>
                 <div class="about__grid">
                     <div class="about__text">
                         <p>
-                            Je m’appelle Jonathan Debart. Je conçois et développe des sites web
-                            qui allient <strong>clarté, performance et identité visuelle forte</strong>.
+                            <?= t('about_intro') ?>
+                            <strong><?= t('about_intro_highlight') ?></strong>.
                         </p>
                         <p>
-                            Bilingue français / anglais et basé aux Philippines, je propose une
-                            collaboration fluide avec les entreprises européennes tout en
-                            bénéficiant d’un coût de vie plus bas — ce qui me permet d’offrir
-                            un excellent <strong>rapport qualité / prix</strong>.
+                            <?= t('about_location') ?>
+                            <strong><?= t('about_location_highlight') ?></strong>.
                         </p>
                         <p>
-                            Mon approche : un code propre, maintenable, et un design qui
-                            reflète vraiment votre marque.
+                            <?= t('about_approach') ?>
                         </p>
                     </div>
                     <div class="about__highlights">
                         <div class="highlight-card">
-                            <h3>Stack technique</h3>
+                            <h3><?= t('tech_stack') ?></h3>
                             <p>HTML5, CSS3 / SASS, JavaScript, PHP, Node.js, MySQL.</p>
                         </div>
                         <div class="highlight-card">
-                            <h3>Bilingue</h3>
-                            <p>Français & anglais — idéal pour les projets internationaux.</p>
+                            <h3><?= t('languages') ?></h3>
+                            <p><?= t('languages_description') ?></p>
                         </div>
                         <div class="highlight-card">
-                            <h3>Remote friendly</h3>
-                            <p>Organisation, communication claire, livrables documentés.</p>
+                            <h3><?= t('remote_friendly') ?></h3>
+                            <p><?= t('remote_description') ?></p>
                         </div>
                     </div>
                 </div>
@@ -89,37 +90,25 @@
         <section class="section section--services" id="services">
             <div class="section__inner">
                 <div class="section__header">
-                    <p class="section__eyebrow">Services</p>
-                    <h2 class="section__title">Ce que je peux faire pour vous</h2>
+                    <p class="section__eyebrow"><?= t('services') ?></p>
+                    <h2 class="section__title"><?= t('services_heading') ?></h2>
                 </div>
                 <div class="cards-grid">
                     <article class="service-card">
-                        <h3>Sites vitrines modernes</h3>
-                        <p>
-                            Conception et développement de sites vitrines responsive,
-                            pensés pour être rapides, clairs et convaincants.
-                        </p>
+                        <h3><?= t('service_showcase') ?></h3>
+                        <p><?= t('service_showcase_description') ?></p>
                     </article>
                     <article class="service-card">
-                        <h3>Intégration & front‑end</h3>
-                        <p>
-                            Intégration pixel‑perfect à partir de maquettes ou de zéro,
-                            animations légères, expérience utilisateur fluide.
-                        </p>
+                        <h3><?= t('service_frontend') ?></h3>
+                        <p><?= t('service_frontend_description') ?></p>
                     </article>
                     <article class="service-card">
-                        <h3>Back‑end & logique métier</h3>
-                        <p>
-                            PHP, MySQL, formulaires avancés, gestion de contenu,
-                            fonctionnalités sur‑mesure.
-                        </p>
+                        <h3><?= t('service_backend') ?></h3>
+                        <p><?= t('service_backend_description') ?></p>
                     </article>
                     <article class="service-card">
-                        <h3>Optimisation & refonte</h3>
-                        <p>
-                            Amélioration de sites existants : performance, responsive,
-                            structure du code, SEO technique.
-                        </p>
+                        <h3><?= t('service_optimization') ?></h3>
+                        <p><?= t('service_optimization_description') ?></p>
                     </article>
                 </div>
             </div>
@@ -129,76 +118,56 @@
         <section class="section section--portfolio" id="portfolio">
             <div class="section__inner">
                 <div class="section__header">
-                    <p class="section__eyebrow">Portfolio</p>
-                    <h2 class="section__title">Quelques projets</h2>
+                    <p class="section__eyebrow"><?= t('portfolio') ?></p>
+                    <h2 class="section__title"><?= t('portfolio_heading') ?></h2>
                 </div>
                 <div class="cards-grid cards-grid--portfolio">
                     <article class="portfolio-card">
                         <div class="portfolio-card__thumb placeholder-thumb">
-                            <span>Projet #1</span>
+                            <span><?= t('project') ?> #1</span>
                         </div>
                         <div class="portfolio-card__body">
                             <h3>Fallout Fans</h3>
-                            <p>
-                                Site de fans développé from scratch avec XAMPP.
-                                Mise en place d’une architecture propre, gestion des routes,
-                                et intégration front‑end personnalisée.
-                            </p>
+                            <p><?= t('fallout_description') ?></p>
                             <a href="https://github.com/TritonDeLaVega/FalloutFansite" target="_blank" class="btn-github">
-                                Voir le code sur GitHub
+                                <?= t('view_code') ?>
                             </a>
 
                         </div>
                     </article>
                     <article class="portfolio-card">
                         <div class="portfolio-card__thumb placeholder-thumb">
-                            <span>Projet #2</span>
+                            <span><?= t('project') ?> #2</span>
                         </div>
                         <div class="portfolio-card__body">
                             <h3>Debart Web Design</h3>
-                            <p>
-                                Ce site lui‑même : vitrine professionnelle, design sérieux
-                                et artistique, sans passer par WordPress, développé via Xampp en local, codé de A à Z.
-                                Code organisé et versionné sur GitHub.
-                            </p>
+                            <p><?= t('dwd_description') ?></p>
                             <a href="https://github.com/TritonDeLaVega/Debart-Web-Design.git" target="_blank" class="btn-github">
-                                Voir le code sur GitHub
+                                <?= t('view_code') ?>
                             </a>
                         </div>
                     </article>
                     <article class="portfolio-card">
                         <div class="portfolio-card__thumb placeholder-thumb">
-                            <span>Projet #3</span>
+                            <span><?= t('project') ?> #3</span>
                         </div>
                         <div class="portfolio-card__body">
                             <h3>Wolf Soft Eure</h3>
-                            <p>
-                                Ce site est un projet personnel, une refonte complète d'un site déjà existant d'une association d'airsoft,
-                                localisé dans le département de l'Eure en France, et qui à pour but de promouvoir ce loisir,
-                                passer des commandes, planifier les évènements, et proposer un support technique pour le matériel défectueux.
-                                développé sur un thème WordPress entièrement personnalisé.
-                                Code organisé et versionné sur GitHub.
-                            </p>
+                            <p><?= t('wolfsoft_description') ?></p>
                             <a href="https://github.com/TritonDeLaVega/WolfSoftEure.git" target="_blank" class="btn-github">
-                                Voir le code sur GitHub
+                                <?= t('view_code') ?>
                             </a>
                         </div>
                     </article>
                     <article class="portfolio-card">
                         <div class="portfolio-card__thumb placeholder-thumb">
-                            <span>Projet #4</span>
+                            <span><?= t('project') ?> #4</span>
                         </div>
                         <div class="portfolio-card__body">
                             <h3>Planty</h3>
-                            <p>
-                                Ce site était un exercice durant ma formation, il demandait de recréer fidèlement un site web,
-                                par rapport à une maquette Figma mise à disposition. Le site fait la promotion commerciale d'une boisson 100% naturelle.
-                                Bien que fictive, ce site n'est pas dépourvu d'élégance.
-                                Sur un thème WordPress personnalisé.
-                                Code organisé et versionné sur GitHub.
-                            </p>
+                            <p><?= t('planty_description') ?></p>
                             <a href="https://github.com/TritonDeLaVega/planty.git" target="_blank" class="btn-github">
-                                Voir le code sur GitHub
+                                <?= t('view_code') ?>
                             </a>
                         </div>
                     </article>
@@ -210,37 +179,35 @@
         <section class="section section--contact" id="contact">
             <div class="section__inner">
                 <div class="section__header">
-                    <p class="section__eyebrow">Contact</p>
-                    <h2 class="section__title">Parlons de votre projet</h2>
+                    <p class="section__eyebrow"><?= t('contact') ?></p>
+                    <h2 class="section__title"><?= t('contact_heading') ?></h2>
                 </div>
                 <div class="contact__grid">
                     <div class="contact__text">
                         <p>
-                            Un site à créer, une refonte à envisager, ou simplement une idée
-                            à clarifier ? Envoyez‑moi quelques lignes et je vous réponds
-                            rapidement avec des pistes concrètes.
+                            <?= t('contact_description') ?>
                         </p>
                         <ul class="contact__list">
-                            <li><strong>Email :</strong> debartwebdesign@gmail.com</li>
+                            <li><strong><?= t('email') ?> :</strong> debartwebdesign@gmail.com</li>
                             <li><strong>GitHub :</strong> TritonDeLaVega</li>
-                            <li><strong>Basé à :</strong> Dauis, Bohol, Philippines</li>
+                            <li><strong><?= t('based_in') ?> :</strong> Dauis, Bohol, Philippines</li>
                         </ul>
                     </div>
                     <form class="contact__form">
                         <div class="form__field">
-                            <label for="name">Nom</label>
-                            <input type="text" id="name" name="name" placeholder="Votre nom">
+                            <label for="name"><?= t('name') ?></label>
+                            <input type="text" id="name" name="name" placeholder="<?= t('your_name') ?>">
                         </div>
                         <div class="form__field">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" placeholder="vous@exemple.com">
+                            <label for="email"><?= t('email') ?></label>
+                            <input type="email" id="email" name="email" placeholder="<?= t('your_email') ?>">
                         </div>
                         <div class="form__field">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" rows="4" placeholder="Parlez‑moi de votre projet..."></textarea>
+                            <label for="message"><?= t('message') ?></label>
+                            <textarea id="message" name="message" rows="4" placeholder="<?= t('message_placeholder') ?>"></textarea>
                         </div>
-                        <button type="submit" class="btn btn--primary">Envoyer</button>
-                        <p class="form__note">Formulaire en démo pour l’instant (à connecter côté back‑end plus tard).</p>
+                        <button type="submit" class="btn btn--primary"><?= t('send') ?></button>
+                        <p class="form__note"><?= t('form_note') ?></p>
                     </form>
                 </div>
             </div>

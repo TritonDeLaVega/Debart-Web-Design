@@ -1,12 +1,12 @@
 <?php
     // components/nav.php
 ?>
-<nav class="site-nav">
+<nav class="site-nav" id="site-nav">
     <ul>
-        <li><a href="#home">Accueil</a></li>
-        <li><a href="#about">À propos</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#portfolio">Portfolio</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#home"><?= t('home') ?></a></li>
+        <li><a href="#about"><?= t('about') ?></a></li>
+        <li><a href="#services"><?= t('services') ?></a></li>
+        <li><a href="#portfolio"><?= t('portfolio') ?></a></li>
+        <li><a href="#contact"><?= t('contact') ?></a></li>
     </ul>
 </nav>

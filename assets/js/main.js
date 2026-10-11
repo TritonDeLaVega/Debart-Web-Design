@@ -18,12 +18,14 @@ function init() {
             console.log('burger cliqué');
             toggle.classList.toggle('is-open');
             nav.classList.toggle('is-open');
+            toggle.setAttribute('aria-expanded', toggle.classList.contains('is-open'));
         });
 
         nav.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 toggle.classList.remove('is-open');
                 nav.classList.remove('is-open');
+                toggle.setAttribute('aria-expanded', 'false');
             });
         });
     } else {

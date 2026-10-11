@@ -68,6 +68,7 @@ Debart-Web-Design/
 
 - Design **sérieux + artistique** basé sur les couleurs du logo DWD  
 - Navigation responsive avec **burger menu animé**  
+- Site disponible en **français et en anglais** via les drapeaux du header (`?lang=fr` / `?lang=en`)
 - Sections : Hero, À propos, Services, Portfolio, Contact  
 - Animations douces au scroll (IntersectionObserver)  
 - Code organisé en **composants PHP réutilisables**  
@@ -82,4 +83,3 @@ Debart-Web-Design/
 1. Cloner le repo :
    ```bash
    git clone https://github.com/TritonDeLaVega/Debart-Web-Design.git
-

@@ -5,10 +5,10 @@
     <div class="site-footer__inner">
         <p class="site-footer__brand">Debart Web Design</p>
         <p class="site-footer__meta">
-            &copy; <?php echo date('Y'); ?> — Développement & design par Jonathan Debart.
+            &copy; <?php echo date('Y'); ?> — <?= t('footer_meta') ?>
         </p>
         <p class="site-footer__note">
-            Bilingue FR / EN — France ↔ Philippines.
+            <?= t('footer_note') ?>
         </p>
     </div>
 </footer>
