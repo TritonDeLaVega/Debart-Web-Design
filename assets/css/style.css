@@ -422,6 +422,24 @@ main {
   gap: 1.25rem;
 }
 
+.services__intro {
+  max-width: 48rem;
+  margin: 0.9rem 0 0;
+  color: #b0b3c1;
+  line-height: 1.7;
+}
+
+.services__quote-note {
+  max-width: 48rem;
+  margin: 1.5rem 0 0;
+  padding: 1rem 1.2rem;
+  border-left: 3px solid #00e5ff;
+  border-radius: 0 12px 12px 0;
+  background: rgba(0, 229, 255, 0.06);
+  color: #b0b3c1;
+  line-height: 1.6;
+}
+
 .cards-grid--portfolio {
   grid-template-columns: minmax(0, 1fr);
 }

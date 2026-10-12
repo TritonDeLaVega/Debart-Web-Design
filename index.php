@@ -92,6 +92,7 @@ require_once 'components/translations.php';
                 <div class="section__header">
                     <p class="section__eyebrow"><?= t('services') ?></p>
                     <h2 class="section__title"><?= t('services_heading') ?></h2>
+                    <p class="services__intro"><?= t('services_intro') ?></p>
                 </div>
                 <div class="cards-grid">
                     <article class="service-card">
@@ -111,6 +112,7 @@ require_once 'components/translations.php';
                         <p><?= t('service_optimization_description') ?></p>
                     </article>
                 </div>
+                <p class="services__quote-note"><?= t('service_quote_note') ?></p>
             </div>
         </section>
 
