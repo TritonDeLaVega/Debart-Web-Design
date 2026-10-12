@@ -6,6 +6,48 @@ function init() {
     if (initialized) return;
     initialized = true;
 
+    // --- EmailJS contact form ---
+    const contactForm = document.querySelector('#contact-form');
+
+    if (contactForm) {
+        const formStatus = document.querySelector('#contact-form-status');
+        const submitButton = contactForm.querySelector('button[type="submit"]');
+        let emailJsInitialized = false;
+
+        contactForm.addEventListener('submit', async event => {
+            event.preventDefault();
+
+            if (!window.emailjs) {
+                formStatus.dataset.state = 'error';
+                formStatus.textContent = contactForm.dataset.unavailable;
+                console.error('EmailJS failed to load.');
+                return;
+            }
+
+            submitButton.disabled = true;
+            formStatus.dataset.state = 'sending';
+            formStatus.textContent = contactForm.dataset.sending;
+
+            try {
+                if (!emailJsInitialized) {
+                    window.emailjs.init({ publicKey: 'MdUw2ddt_VjtXIZvw' });
+                    emailJsInitialized = true;
+                }
+
+                await window.emailjs.sendForm('service-debart', 'template_hhqp7ig', contactForm);
+                formStatus.dataset.state = 'success';
+                formStatus.textContent = contactForm.dataset.success;
+                contactForm.reset();
+            } catch (error) {
+                console.error('EmailJS failed to send the contact form.', error);
+                formStatus.dataset.state = 'error';
+                formStatus.textContent = contactForm.dataset.error;
+            } finally {
+                submitButton.disabled = false;
+            }
+        });
+    }
+
     // --- Burger menu ---
     const toggle = document.querySelector('.site-header__toggle');
     const nav = document.querySelector('.site-nav');

@@ -193,21 +193,29 @@ require_once 'components/translations.php';
                             <li><strong><?= t('based_in') ?> :</strong> Dauis, Bohol, Philippines</li>
                         </ul>
                     </div>
-                    <form class="contact__form">
+                    <form
+                        class="contact__form"
+                        id="contact-form"
+                        data-sending="<?= t('form_sending') ?>"
+                        data-success="<?= t('form_success') ?>"
+                        data-error="<?= t('form_error') ?>"
+                        data-unavailable="<?= t('form_service_unavailable') ?>"
+                    >
                         <div class="form__field">
                             <label for="name"><?= t('name') ?></label>
-                            <input type="text" id="name" name="name" placeholder="<?= t('your_name') ?>">
+                            <input type="text" id="name" name="name" placeholder="<?= t('your_name') ?>" autocomplete="name" minlength="2" maxlength="100" required>
                         </div>
                         <div class="form__field">
                             <label for="email"><?= t('email') ?></label>
-                            <input type="email" id="email" name="email" placeholder="<?= t('your_email') ?>">
+                            <input type="email" id="email" name="email" placeholder="<?= t('your_email') ?>" autocomplete="email" maxlength="254" required>
                         </div>
                         <div class="form__field">
                             <label for="message"><?= t('message') ?></label>
-                            <textarea id="message" name="message" rows="4" placeholder="<?= t('message_placeholder') ?>"></textarea>
+                            <textarea id="message" name="message" rows="4" placeholder="<?= t('message_placeholder') ?>" minlength="10" maxlength="5000" required></textarea>
                         </div>
                         <button type="submit" class="btn btn--primary"><?= t('send') ?></button>
                         <p class="form__note"><?= t('form_note') ?></p>
+                        <p class="form__status" id="contact-form-status" role="status" aria-live="polite"></p>
                     </form>
                 </div>
             </div>
@@ -216,6 +224,7 @@ require_once 'components/translations.php';
 
     <?php include 'components/footer.php'; ?>
 
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script src="assets/js/main.js"></script>
 </body>
 

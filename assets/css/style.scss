@@ -547,6 +547,25 @@ main {
     color: $color-text-muted;
 }
 
+.form__status {
+    min-height: 1.5em;
+    margin: 0.75rem 0 0;
+    font-size: 0.9rem;
+    font-weight: 600;
+
+    &[data-state="sending"] {
+        color: $color-primary;
+    }
+
+    &[data-state="success"] {
+        color: #54d68b;
+    }
+
+    &[data-state="error"] {
+        color: #ff8585;
+    }
+}
+
 @media (min-width: 900px) {
     .contact__grid {
         grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
