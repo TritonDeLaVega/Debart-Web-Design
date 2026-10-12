@@ -188,7 +188,7 @@ require_once 'components/translations.php';
                             <?= t('contact_description') ?>
                         </p>
                         <ul class="contact__list">
-                            <li><strong><?= t('email') ?> :</strong> debartwebdesign@gmail.com</li>
+                            <li><strong><?= t('email') ?> :</strong> <a href="mailto:info.debartwebdesign@gmail.com">info.debartwebdesign@gmail.com</a></li>
                             <li><strong>GitHub :</strong> TritonDeLaVega</li>
                             <li><strong><?= t('based_in') ?> :</strong> Dauis, Bohol, Philippines</li>
                         </ul>
