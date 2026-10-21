@@ -105,6 +105,93 @@ function init() {
         }, 5000);
     }
 
+    // --- Project screenshot galleries ---
+    function initializeScreenshotGallery(galleryId, prefix) {
+        const gallery = document.querySelector(galleryId);
+        if (!gallery) return;
+
+        const selector = name => `[data-${prefix}-gallery-${name}]`;
+        const openButtons = document.querySelectorAll(selector('open'));
+        const closeButton = gallery.querySelector(selector('close'));
+        const pageFilter = gallery.querySelector(`[data-${prefix}-gallery-filter="page"]`);
+        const deviceFilter = gallery.querySelector(`[data-${prefix}-gallery-filter="device"]`);
+        const thumbnails = Array.from(gallery.querySelectorAll(selector('thumbnail')));
+        const image = gallery.querySelector(selector('image'));
+        const caption = gallery.querySelector(selector('caption'));
+        const count = gallery.querySelector(selector('count'));
+        const previousButton = gallery.querySelector(selector('prev'));
+        const nextButton = gallery.querySelector(selector('next'));
+        let visibleThumbnails = [];
+        let currentIndex = 0;
+
+        function showScreenshot(index) {
+            if (visibleThumbnails.length === 0) return;
+
+            currentIndex = (index + visibleThumbnails.length) % visibleThumbnails.length;
+            const selected = visibleThumbnails[currentIndex];
+            image.src = selected.dataset.src;
+            image.alt = selected.dataset.caption;
+            caption.textContent = selected.dataset.caption;
+            count.textContent = `${currentIndex + 1} / ${visibleThumbnails.length}`;
+            previousButton.disabled = visibleThumbnails.length < 2;
+            nextButton.disabled = visibleThumbnails.length < 2;
+
+            thumbnails.forEach(thumbnail => {
+                thumbnail.setAttribute('aria-pressed', String(thumbnail === selected));
+            });
+        }
+
+        function applyFilters() {
+            const previousSelection = visibleThumbnails[currentIndex];
+            visibleThumbnails = thumbnails.filter(thumbnail => {
+                const matchesPage = pageFilter.value === 'all' || thumbnail.dataset.page === pageFilter.value;
+                const matchesDevice = deviceFilter.value === 'all' || thumbnail.dataset.device === deviceFilter.value;
+                const isVisible = matchesPage && matchesDevice;
+                thumbnail.hidden = !isVisible;
+                return isVisible;
+            });
+
+            const selectedIndex = visibleThumbnails.indexOf(previousSelection);
+            showScreenshot(selectedIndex >= 0 ? selectedIndex : 0);
+        }
+
+        openButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                pageFilter.value = 'all';
+                deviceFilter.value = 'all';
+                applyFilters();
+                gallery.showModal();
+            });
+        });
+
+        thumbnails.forEach(thumbnail => {
+            thumbnail.addEventListener('click', () => {
+                showScreenshot(visibleThumbnails.indexOf(thumbnail));
+            });
+        });
+
+        pageFilter.addEventListener('change', applyFilters);
+        deviceFilter.addEventListener('change', applyFilters);
+        previousButton.addEventListener('click', () => showScreenshot(currentIndex - 1));
+        nextButton.addEventListener('click', () => showScreenshot(currentIndex + 1));
+        closeButton.addEventListener('click', () => gallery.close());
+
+        gallery.addEventListener('click', event => {
+            if (event.target === gallery) gallery.close();
+        });
+
+        gallery.addEventListener('keydown', event => {
+            if (event.target instanceof HTMLSelectElement) return;
+            if (event.key === 'ArrowLeft') showScreenshot(currentIndex - 1);
+            if (event.key === 'ArrowRight') showScreenshot(currentIndex + 1);
+        });
+
+        applyFilters();
+    }
+
+    initializeScreenshotGallery('#wolf-gallery-dialog', 'wolf');
+    initializeScreenshotGallery('#planty-gallery-dialog', 'planty');
+
     // --- Energy flow ---
     const flow = document.querySelector(".energy-flow");
 
