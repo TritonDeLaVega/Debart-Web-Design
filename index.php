@@ -124,6 +124,18 @@ require_once 'components/translations.php';
                     <h2 class="section__title"><?= t('portfolio_heading') ?></h2>
                 </div>
                 <?php
+                $dwdScreenshots = [
+                    ['file' => 'smartphone-01-accueil-apropos.webp', 'page' => 'home', 'device' => 'mobile', 'caption' => 'dwd_shot_mobile_home'],
+                    ['file' => 'smartphone-02-apropos-services.webp', 'page' => 'about', 'device' => 'mobile', 'caption' => 'dwd_shot_mobile_about'],
+                    ['file' => 'smartphone-03-services.webp', 'page' => 'services', 'device' => 'mobile', 'caption' => 'dwd_shot_mobile_services'],
+                    ['file' => 'smartphone-04-portfolio.webp', 'page' => 'portfolio', 'device' => 'mobile', 'caption' => 'dwd_shot_mobile_portfolio'],
+                    ['file' => 'smartphone-05-portfolio-contact.webp', 'page' => 'contact', 'device' => 'mobile', 'caption' => 'dwd_shot_mobile_contact'],
+                    ['file' => 'ordinateur-01-accueil-apropos.webp', 'page' => 'home', 'device' => 'desktop', 'caption' => 'dwd_shot_desktop_home_about'],
+                    ['file' => 'ordinateur-02-projets-contact.webp', 'page' => 'portfolio', 'device' => 'desktop', 'caption' => 'dwd_shot_desktop_portfolio_contact'],
+                    ['file' => 'ordinateur-03-accueil-apropos.webp', 'page' => 'about', 'device' => 'desktop', 'caption' => 'dwd_shot_desktop_about'],
+                    ['file' => 'ordinateur-04-services-projets.webp', 'page' => 'services', 'device' => 'desktop', 'caption' => 'dwd_shot_desktop_services_portfolio'],
+                    ['file' => 'ordinateur-05-projets-contact.webp', 'page' => 'contact', 'device' => 'desktop', 'caption' => 'dwd_shot_desktop_contact'],
+                ];
                 $falloutScreenshots = [
                     ['file' => 'accueil-smartphone.webp', 'page' => 'home', 'device' => 'mobile', 'caption' => 'fallout_shot_home_mobile'],
                     ['file' => 'actualites-smartphone-1.webp', 'page' => 'news', 'device' => 'mobile', 'caption' => 'fallout_shot_news_mobile'],
@@ -211,9 +223,20 @@ require_once 'components/translations.php';
                         <div class="portfolio-card__body">
                             <h3>Debart Web Design</h3>
                             <p><?= t('dwd_description') ?></p>
-                            <a href="https://github.com/TritonDeLaVega/Debart-Web-Design.git" target="_blank" class="btn-github">
-                                <?= t('view_code') ?>
-                            </a>
+                            <div class="portfolio-card__actions">
+                                <button
+                                    type="button"
+                                    class="btn btn--primary wolf-gallery__button"
+                                    data-dwd-gallery-open
+                                    aria-haspopup="dialog"
+                                    aria-controls="dwd-gallery-dialog"
+                                >
+                                    <?= t('dwd_open_gallery') ?>
+                                </button>
+                                <a href="https://github.com/TritonDeLaVega/Debart-Web-Design.git" target="_blank" class="btn-github">
+                                    <?= t('view_code') ?>
+                                </a>
+                            </div>
                         </div>
                     </article>
                     <article class="portfolio-card">
@@ -424,6 +447,61 @@ require_once 'components/translations.php';
                                 aria-pressed="false"
                             >
                                 <img src="assets/img/fallout-fans/<?= htmlspecialchars($screenshot['file'], ENT_QUOTES, 'UTF-8') ?>" alt="" loading="lazy">
+                                <span><?= t($screenshot['caption']) ?></span>
+                            </button>
+                        <?php endforeach; ?>
+                    </div>
+                </dialog>
+                <dialog class="wolf-gallery" id="dwd-gallery-dialog" aria-labelledby="dwd-gallery-title">
+                    <div class="wolf-gallery__header">
+                        <div>
+                            <p class="section__eyebrow">Debart Web Design</p>
+                            <h2 id="dwd-gallery-title"><?= t('dwd_gallery_title') ?></h2>
+                        </div>
+                        <button type="button" class="wolf-gallery__close" data-dwd-gallery-close aria-label="<?= t('dwd_close_gallery') ?>">&times;</button>
+                    </div>
+                    <div class="wolf-gallery__filters">
+                        <label>
+                            <?= t('dwd_filter_page') ?>
+                            <select data-dwd-gallery-filter="page">
+                                <option value="all"><?= t('dwd_all_pages') ?></option>
+                                <option value="home"><?= t('dwd_page_home') ?></option>
+                                <option value="about"><?= t('dwd_page_about') ?></option>
+                                <option value="services"><?= t('dwd_page_services') ?></option>
+                                <option value="portfolio"><?= t('dwd_page_portfolio') ?></option>
+                                <option value="contact"><?= t('dwd_page_contact') ?></option>
+                            </select>
+                        </label>
+                        <label>
+                            <?= t('dwd_filter_device') ?>
+                            <select data-dwd-gallery-filter="device">
+                                <option value="all"><?= t('dwd_all_devices') ?></option>
+                                <option value="mobile"><?= t('dwd_device_mobile') ?></option>
+                                <option value="desktop"><?= t('dwd_device_desktop') ?></option>
+                            </select>
+                        </label>
+                    </div>
+                    <div class="wolf-gallery__stage">
+                        <button type="button" class="wolf-gallery__nav" data-dwd-gallery-prev aria-label="<?= t('dwd_previous') ?>">&lsaquo;</button>
+                        <img src="assets/img/dwd-portfolio/smartphone-01-accueil-apropos.webp" alt="<?= t('dwd_shot_mobile_home') ?>" data-dwd-gallery-image>
+                        <button type="button" class="wolf-gallery__nav" data-dwd-gallery-next aria-label="<?= t('dwd_next') ?>">&rsaquo;</button>
+                    </div>
+                    <p class="wolf-gallery__caption" data-dwd-gallery-caption aria-live="polite"><?= t('dwd_shot_mobile_home') ?></p>
+                    <p class="wolf-gallery__count" data-dwd-gallery-count role="status" aria-live="polite"></p>
+                    <div class="wolf-gallery__thumbnails" aria-label="<?= t('dwd_gallery_thumbnails') ?>">
+                        <?php foreach ($dwdScreenshots as $index => $screenshot): ?>
+                            <button
+                                type="button"
+                                class="wolf-gallery__thumbnail"
+                                data-dwd-gallery-thumbnail
+                                data-index="<?= $index ?>"
+                                data-src="assets/img/dwd-portfolio/<?= htmlspecialchars($screenshot['file'], ENT_QUOTES, 'UTF-8') ?>"
+                                data-page="<?= htmlspecialchars($screenshot['page'], ENT_QUOTES, 'UTF-8') ?>"
+                                data-device="<?= htmlspecialchars($screenshot['device'], ENT_QUOTES, 'UTF-8') ?>"
+                                data-caption="<?= t($screenshot['caption']) ?>"
+                                aria-pressed="false"
+                            >
+                                <img src="assets/img/dwd-portfolio/<?= htmlspecialchars($screenshot['file'], ENT_QUOTES, 'UTF-8') ?>" alt="" loading="lazy">
                                 <span><?= t($screenshot['caption']) ?></span>
                             </button>
                         <?php endforeach; ?>
