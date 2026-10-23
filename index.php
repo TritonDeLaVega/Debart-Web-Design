@@ -124,6 +124,30 @@ require_once 'components/translations.php';
                     <h2 class="section__title"><?= t('portfolio_heading') ?></h2>
                 </div>
                 <?php
+                $falloutScreenshots = [
+                    ['file' => 'accueil-smartphone.webp', 'page' => 'home', 'device' => 'mobile', 'caption' => 'fallout_shot_home_mobile'],
+                    ['file' => 'actualites-smartphone-1.webp', 'page' => 'news', 'device' => 'mobile', 'caption' => 'fallout_shot_news_mobile'],
+                    ['file' => 'actualites-smartphone-2.webp', 'page' => 'news', 'device' => 'mobile', 'caption' => 'fallout_shot_news_mobile_continued'],
+                    ['file' => 'galerie-introduction-smartphone.webp', 'page' => 'gallery', 'device' => 'mobile', 'caption' => 'fallout_shot_gallery_mobile'],
+                    ['file' => 'galerie-artworks-smartphone-1.webp', 'page' => 'gallery', 'device' => 'mobile', 'caption' => 'fallout_shot_gallery_artworks_mobile'],
+                    ['file' => 'galerie-artworks-smartphone-2.webp', 'page' => 'gallery', 'device' => 'mobile', 'caption' => 'fallout_shot_gallery_artworks_mobile_continued'],
+                    ['file' => 'boutique-smartphone-1.webp', 'page' => 'store', 'device' => 'mobile', 'caption' => 'fallout_shot_store_mobile'],
+                    ['file' => 'boutique-smartphone-2.webp', 'page' => 'store', 'device' => 'mobile', 'caption' => 'fallout_shot_store_mobile_product'],
+                    ['file' => 'accueil-ordinateur-1.webp', 'page' => 'home', 'device' => 'desktop', 'caption' => 'fallout_shot_home_desktop'],
+                    ['file' => 'accueil-ordinateur-2.webp', 'page' => 'home', 'device' => 'desktop', 'caption' => 'fallout_shot_home_desktop_continued'],
+                    ['file' => 'actualites-ordinateur-1.webp', 'page' => 'news', 'device' => 'desktop', 'caption' => 'fallout_shot_news_desktop'],
+                    ['file' => 'actualites-ordinateur-2.webp', 'page' => 'news', 'device' => 'desktop', 'caption' => 'fallout_shot_news_desktop_continued'],
+                    ['file' => 'galerie-introduction-ordinateur.webp', 'page' => 'gallery', 'device' => 'desktop', 'caption' => 'fallout_shot_gallery_desktop'],
+                    ['file' => 'galerie-artworks-ordinateur.webp', 'page' => 'gallery', 'device' => 'desktop', 'caption' => 'fallout_shot_gallery_artworks_desktop'],
+                    ['file' => 'galerie-artwork-agrandi.webp', 'page' => 'gallery', 'device' => 'desktop', 'caption' => 'fallout_shot_gallery_artwork_open'],
+                    ['file' => 'boutique-ordinateur-1.webp', 'page' => 'store', 'device' => 'desktop', 'caption' => 'fallout_shot_store_desktop'],
+                    ['file' => 'boutique-ordinateur-2.webp', 'page' => 'store', 'device' => 'desktop', 'caption' => 'fallout_shot_store_desktop_product'],
+                    ['file' => 'boutique-ordinateur-3.webp', 'page' => 'store', 'device' => 'desktop', 'caption' => 'fallout_shot_store_desktop_product_2'],
+                    ['file' => 'boutique-ordinateur-4.webp', 'page' => 'store', 'device' => 'desktop', 'caption' => 'fallout_shot_store_desktop_product_3'],
+                    ['file' => 'panier-ordinateur.webp', 'page' => 'cart', 'device' => 'desktop', 'caption' => 'fallout_shot_cart_desktop'],
+                    ['file' => 'paiement-ordinateur-1.webp', 'page' => 'checkout', 'device' => 'desktop', 'caption' => 'fallout_shot_checkout_desktop'],
+                    ['file' => 'paiement-ordinateur-2.webp', 'page' => 'checkout', 'device' => 'desktop', 'caption' => 'fallout_shot_checkout_desktop_continued'],
+                ];
                 $wolfSoftScreenshots = [
                     ['file' => 'accueil-desktop.webp', 'page' => 'home', 'device' => 'desktop', 'caption' => 'wolf_shot_home_desktop'],
                     ['file' => 'accueil-tablette.webp', 'page' => 'home', 'device' => 'tablet', 'caption' => 'wolf_shot_home_tablet'],
@@ -164,10 +188,20 @@ require_once 'components/translations.php';
                         <div class="portfolio-card__body">
                             <h3>Fallout Fans</h3>
                             <p><?= t('fallout_description') ?></p>
-                            <a href="https://github.com/TritonDeLaVega/FalloutFansite" target="_blank" class="btn-github">
-                                <?= t('view_code') ?>
-                            </a>
-
+                            <div class="portfolio-card__actions">
+                                <button
+                                    type="button"
+                                    class="btn btn--primary wolf-gallery__button"
+                                    data-fallout-gallery-open
+                                    aria-haspopup="dialog"
+                                    aria-controls="fallout-gallery-dialog"
+                                >
+                                    <?= t('fallout_open_gallery') ?>
+                                </button>
+                                <a href="https://github.com/TritonDeLaVega/FalloutFansite" target="_blank" class="btn-github">
+                                    <?= t('view_code') ?>
+                                </a>
+                            </div>
                         </div>
                     </article>
                     <article class="portfolio-card">
@@ -334,6 +368,62 @@ require_once 'components/translations.php';
                                 aria-pressed="false"
                             >
                                 <img src="assets/img/planty/<?= htmlspecialchars($screenshot['file'], ENT_QUOTES, 'UTF-8') ?>" alt="" loading="lazy">
+                                <span><?= t($screenshot['caption']) ?></span>
+                            </button>
+                        <?php endforeach; ?>
+                    </div>
+                </dialog>
+                <dialog class="wolf-gallery" id="fallout-gallery-dialog" aria-labelledby="fallout-gallery-title">
+                    <div class="wolf-gallery__header">
+                        <div>
+                            <p class="section__eyebrow">Fallout Fans</p>
+                            <h2 id="fallout-gallery-title"><?= t('fallout_gallery_title') ?></h2>
+                        </div>
+                        <button type="button" class="wolf-gallery__close" data-fallout-gallery-close aria-label="<?= t('fallout_close_gallery') ?>">&times;</button>
+                    </div>
+                    <div class="wolf-gallery__filters">
+                        <label>
+                            <?= t('fallout_filter_page') ?>
+                            <select data-fallout-gallery-filter="page">
+                                <option value="all"><?= t('fallout_all_pages') ?></option>
+                                <option value="home"><?= t('fallout_page_home') ?></option>
+                                <option value="news"><?= t('fallout_page_news') ?></option>
+                                <option value="gallery"><?= t('fallout_page_gallery') ?></option>
+                                <option value="store"><?= t('fallout_page_store') ?></option>
+                                <option value="cart"><?= t('fallout_page_cart') ?></option>
+                                <option value="checkout"><?= t('fallout_page_checkout') ?></option>
+                            </select>
+                        </label>
+                        <label>
+                            <?= t('fallout_filter_device') ?>
+                            <select data-fallout-gallery-filter="device">
+                                <option value="all"><?= t('fallout_all_devices') ?></option>
+                                <option value="desktop"><?= t('fallout_device_desktop') ?></option>
+                                <option value="mobile"><?= t('fallout_device_mobile') ?></option>
+                            </select>
+                        </label>
+                    </div>
+                    <div class="wolf-gallery__stage">
+                        <button type="button" class="wolf-gallery__nav" data-fallout-gallery-prev aria-label="<?= t('fallout_previous') ?>">&lsaquo;</button>
+                        <img src="assets/img/fallout-fans/accueil-ordinateur-1.webp" alt="<?= t('fallout_shot_home_desktop') ?>" data-fallout-gallery-image>
+                        <button type="button" class="wolf-gallery__nav" data-fallout-gallery-next aria-label="<?= t('fallout_next') ?>">&rsaquo;</button>
+                    </div>
+                    <p class="wolf-gallery__caption" data-fallout-gallery-caption aria-live="polite"><?= t('fallout_shot_home_desktop') ?></p>
+                    <p class="wolf-gallery__count" data-fallout-gallery-count role="status" aria-live="polite"></p>
+                    <div class="wolf-gallery__thumbnails" aria-label="<?= t('fallout_gallery_thumbnails') ?>">
+                        <?php foreach ($falloutScreenshots as $index => $screenshot): ?>
+                            <button
+                                type="button"
+                                class="wolf-gallery__thumbnail"
+                                data-fallout-gallery-thumbnail
+                                data-index="<?= $index ?>"
+                                data-src="assets/img/fallout-fans/<?= htmlspecialchars($screenshot['file'], ENT_QUOTES, 'UTF-8') ?>"
+                                data-page="<?= htmlspecialchars($screenshot['page'], ENT_QUOTES, 'UTF-8') ?>"
+                                data-device="<?= htmlspecialchars($screenshot['device'], ENT_QUOTES, 'UTF-8') ?>"
+                                data-caption="<?= t($screenshot['caption']) ?>"
+                                aria-pressed="false"
+                            >
+                                <img src="assets/img/fallout-fans/<?= htmlspecialchars($screenshot['file'], ENT_QUOTES, 'UTF-8') ?>" alt="" loading="lazy">
                                 <span><?= t($screenshot['caption']) ?></span>
                             </button>
                         <?php endforeach; ?>

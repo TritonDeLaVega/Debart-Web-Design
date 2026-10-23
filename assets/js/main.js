@@ -191,6 +191,7 @@ function init() {
 
     initializeScreenshotGallery('#wolf-gallery-dialog', 'wolf');
     initializeScreenshotGallery('#planty-gallery-dialog', 'planty');
+    initializeScreenshotGallery('#fallout-gallery-dialog', 'fallout');
 
     // --- Energy flow ---
     const flow = document.querySelector(".energy-flow");
