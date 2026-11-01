@@ -113,6 +113,7 @@ function init() {
     function initializeScreenshotGallery(galleryId, prefix) {
         const gallery = document.querySelector(galleryId);
         if (!gallery) return;
+        document.body.appendChild(gallery);
 
         const selector = name => `[data-${prefix}-gallery-${name}]`;
         const openButtons = document.querySelectorAll(selector('open'));

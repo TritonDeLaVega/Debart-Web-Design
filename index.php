@@ -9,7 +9,7 @@ require_once 'components/translations.php';
     <title><?= t('page_title') ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="<?= t('page_description') ?>">
-    <link rel="stylesheet" href="assets/css/style.css?v=20261101">
+    <link rel="stylesheet" href="assets/css/style.css?v=20261102">
 </head>
 
 <body>
@@ -550,7 +550,7 @@ require_once 'components/translations.php';
     <?php include 'components/footer.php'; ?>
 
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    <script src="assets/js/main.js?v=20261101"></script>
+    <script src="assets/js/main.js?v=20261102"></script>
 </body>
 
 </html>
