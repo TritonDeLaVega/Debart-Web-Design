@@ -9,7 +9,7 @@ require_once 'components/translations.php';
     <title><?= t('page_title') ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="<?= t('page_description') ?>">
-    <link rel="stylesheet" href="assets/css/style.css?v=20261102">
+    <link rel="stylesheet" href="assets/css/style.css?v=20261101-logo2">
 </head>
 
 <body>
