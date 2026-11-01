@@ -373,13 +373,6 @@ main {
     gap: 2rem;
 }
 
-.about__photo {
-    width: 280px;
-    max-width: 100%;
-    height: auto;
-    margin-top: 1rem;
-}
-
 .about__text p {
     margin-top: 0;
     margin-bottom: 0.9rem;
@@ -525,6 +518,7 @@ main {
     background: #0b1020;
     color: $color-text;
     box-shadow: $shadow-soft;
+    overflow-y: auto;
 
     &::backdrop {
         background: rgba(0, 0, 0, 0.82);
@@ -693,10 +687,23 @@ main {
     }
 }
 
+body.gallery-open {
+    overflow: hidden;
+}
+
+.wolf-gallery--fallback-open {
+    display: block;
+    position: fixed;
+    inset: 3vh auto auto 50%;
+    z-index: 1000;
+    transform: translateX(-50%);
+}
+
 @media (max-width: 600px) {
     .wolf-gallery {
         width: calc(100% - 1rem);
-        max-height: 96vh;
+        max-height: calc(100vh - 1rem);
+        max-height: calc(100dvh - 1rem);
         padding: 0.8rem;
 
         &__stage {
@@ -715,6 +722,17 @@ main {
             grid-template-columns: repeat(3, minmax(0, 1fr));
             max-height: 150px;
         }
+    }
+
+    .wolf-gallery--fallback-open {
+        inset: 0;
+        width: 100%;
+        max-height: 100vh;
+        max-height: 100dvh;
+        height: 100vh;
+        height: 100dvh;
+        border-radius: 0;
+        transform: none;
     }
 }
 

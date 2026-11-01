@@ -77,19 +77,23 @@ function init() {
     // --- Scroll reveal ---
     const revealEls = document.querySelectorAll('.section, .service-card, .portfolio-card, .contact__form');
 
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('is-visible');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.15 });
+    if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
 
-    revealEls.forEach(el => {
-        el.classList.add('will-reveal');
-        observer.observe(el);
-    });
+        revealEls.forEach(el => {
+            el.classList.add('will-reveal');
+            observer.observe(el);
+        });
+    } else {
+        revealEls.forEach(el => el.classList.add('is-visible'));
+    }
 
     // --- Background slider ---
     const slides = document.querySelectorAll('.background-slider .slide');
@@ -123,6 +127,37 @@ function init() {
         const nextButton = gallery.querySelector(selector('next'));
         let visibleThumbnails = [];
         let currentIndex = 0;
+        let lastFocusedElement = null;
+
+        function openGallery(opener) {
+            lastFocusedElement = opener;
+            pageFilter.value = 'all';
+            deviceFilter.value = 'all';
+            applyFilters();
+
+            if (typeof gallery.showModal === 'function') {
+                gallery.showModal();
+            } else {
+                gallery.setAttribute('open', '');
+                gallery.classList.add('wolf-gallery--fallback-open');
+                gallery.setAttribute('aria-modal', 'true');
+                document.body.classList.add('gallery-open');
+                closeButton.focus();
+            }
+        }
+
+        function closeGallery() {
+            if (gallery.classList.contains('wolf-gallery--fallback-open')) {
+                gallery.removeAttribute('open');
+                gallery.classList.remove('wolf-gallery--fallback-open');
+                gallery.removeAttribute('aria-modal');
+                document.body.classList.remove('gallery-open');
+            } else if (typeof gallery.close === 'function' && gallery.open) {
+                gallery.close();
+            }
+
+            if (lastFocusedElement) lastFocusedElement.focus();
+        }
 
         function showScreenshot(index) {
             if (visibleThumbnails.length === 0) return;
@@ -157,10 +192,7 @@ function init() {
 
         openButtons.forEach(button => {
             button.addEventListener('click', () => {
-                pageFilter.value = 'all';
-                deviceFilter.value = 'all';
-                applyFilters();
-                gallery.showModal();
+                openGallery(button);
             });
         });
 
@@ -174,16 +206,25 @@ function init() {
         deviceFilter.addEventListener('change', applyFilters);
         previousButton.addEventListener('click', () => showScreenshot(currentIndex - 1));
         nextButton.addEventListener('click', () => showScreenshot(currentIndex + 1));
-        closeButton.addEventListener('click', () => gallery.close());
+        closeButton.addEventListener('click', closeGallery);
 
         gallery.addEventListener('click', event => {
-            if (event.target === gallery) gallery.close();
+            if (event.target === gallery) closeGallery();
         });
 
         gallery.addEventListener('keydown', event => {
+            if (event.key === 'Escape' && gallery.classList.contains('wolf-gallery--fallback-open')) {
+                event.preventDefault();
+                closeGallery();
+                return;
+            }
             if (event.target instanceof HTMLSelectElement) return;
             if (event.key === 'ArrowLeft') showScreenshot(currentIndex - 1);
             if (event.key === 'ArrowRight') showScreenshot(currentIndex + 1);
+        });
+
+        gallery.addEventListener('close', () => {
+            if (lastFocusedElement) lastFocusedElement.focus();
         });
 
         applyFilters();

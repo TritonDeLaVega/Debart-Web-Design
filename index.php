@@ -9,7 +9,7 @@ require_once 'components/translations.php';
     <title><?= t('page_title') ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="<?= t('page_description') ?>">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css?v=20261101">
 </head>
 
 <body>
@@ -48,11 +48,6 @@ require_once 'components/translations.php';
                 <div class="section__header">
                     <p class="section__eyebrow"><?= t('about') ?></p>
                     <h2 class="section__title"><?= t('about_heading') ?></h2>
-                    <img
-                        src="assets/img/MoPhotoSuisse.jpg"
-                        alt="Jonathan Debart"
-                        class="about__photo"
-                    >
                 </div>
                 <div class="about__grid">
                     <div class="about__text">
@@ -71,7 +66,7 @@ require_once 'components/translations.php';
                     <div class="about__highlights">
                         <div class="highlight-card">
                             <h3><?= t('tech_stack') ?></h3>
-                            <p>HTML5, CSS3 / SASS, JavaScript, PHP, Node.js, MySQL.</p>
+                            <p>HTML5, CSS3 / SASS, JavaScript, jQuery, PHP, Node.js, MySQL.</p>
                         </div>
                         <div class="highlight-card">
                             <h3><?= t('languages') ?></h3>
@@ -125,14 +120,10 @@ require_once 'components/translations.php';
                 </div>
                 <?php
                 $dwdScreenshots = [
-                    ['file' => 'smartphone-01-accueil-apropos.webp', 'page' => 'home', 'device' => 'mobile', 'caption' => 'dwd_shot_mobile_home'],
-                    ['file' => 'smartphone-02-apropos-services.webp', 'page' => 'about', 'device' => 'mobile', 'caption' => 'dwd_shot_mobile_about'],
                     ['file' => 'smartphone-03-services.webp', 'page' => 'services', 'device' => 'mobile', 'caption' => 'dwd_shot_mobile_services'],
                     ['file' => 'smartphone-04-portfolio.webp', 'page' => 'portfolio', 'device' => 'mobile', 'caption' => 'dwd_shot_mobile_portfolio'],
                     ['file' => 'smartphone-05-portfolio-contact.webp', 'page' => 'contact', 'device' => 'mobile', 'caption' => 'dwd_shot_mobile_contact'],
-                    ['file' => 'ordinateur-01-accueil-apropos.webp', 'page' => 'home', 'device' => 'desktop', 'caption' => 'dwd_shot_desktop_home_about'],
                     ['file' => 'ordinateur-02-projets-contact.webp', 'page' => 'portfolio', 'device' => 'desktop', 'caption' => 'dwd_shot_desktop_portfolio_contact'],
-                    ['file' => 'ordinateur-03-accueil-apropos.webp', 'page' => 'about', 'device' => 'desktop', 'caption' => 'dwd_shot_desktop_about'],
                     ['file' => 'ordinateur-04-services-projets.webp', 'page' => 'services', 'device' => 'desktop', 'caption' => 'dwd_shot_desktop_services_portfolio'],
                     ['file' => 'ordinateur-05-projets-contact.webp', 'page' => 'contact', 'device' => 'desktop', 'caption' => 'dwd_shot_desktop_contact'],
                 ];
@@ -466,7 +457,6 @@ require_once 'components/translations.php';
                             <select data-dwd-gallery-filter="page">
                                 <option value="all"><?= t('dwd_all_pages') ?></option>
                                 <option value="home"><?= t('dwd_page_home') ?></option>
-                                <option value="about"><?= t('dwd_page_about') ?></option>
                                 <option value="services"><?= t('dwd_page_services') ?></option>
                                 <option value="portfolio"><?= t('dwd_page_portfolio') ?></option>
                                 <option value="contact"><?= t('dwd_page_contact') ?></option>
@@ -483,10 +473,10 @@ require_once 'components/translations.php';
                     </div>
                     <div class="wolf-gallery__stage">
                         <button type="button" class="wolf-gallery__nav" data-dwd-gallery-prev aria-label="<?= t('dwd_previous') ?>">&lsaquo;</button>
-                        <img src="assets/img/dwd-portfolio/smartphone-01-accueil-apropos.webp" alt="<?= t('dwd_shot_mobile_home') ?>" data-dwd-gallery-image>
+                        <img src="assets/img/dwd-portfolio/smartphone-03-services.webp" alt="<?= t('dwd_shot_mobile_services') ?>" data-dwd-gallery-image>
                         <button type="button" class="wolf-gallery__nav" data-dwd-gallery-next aria-label="<?= t('dwd_next') ?>">&rsaquo;</button>
                     </div>
-                    <p class="wolf-gallery__caption" data-dwd-gallery-caption aria-live="polite"><?= t('dwd_shot_mobile_home') ?></p>
+                    <p class="wolf-gallery__caption" data-dwd-gallery-caption aria-live="polite"><?= t('dwd_shot_mobile_services') ?></p>
                     <p class="wolf-gallery__count" data-dwd-gallery-count role="status" aria-live="polite"></p>
                     <div class="wolf-gallery__thumbnails" aria-label="<?= t('dwd_gallery_thumbnails') ?>">
                         <?php foreach ($dwdScreenshots as $index => $screenshot): ?>
@@ -525,7 +515,7 @@ require_once 'components/translations.php';
                         <ul class="contact__list">
                             <li><strong><?= t('email') ?> :</strong> <a href="mailto:info.debartwebdesign@gmail.com">info.debartwebdesign@gmail.com</a></li>
                             <li><strong>GitHub :</strong> TritonDeLaVega</li>
-                            <li><strong><?= t('based_in') ?> :</strong> Dauis, Bohol, Philippines</li>
+                            <li><strong><?= t('based_in') ?> :</strong> <?= t('location_region') ?></li>
                         </ul>
                     </div>
                     <form
@@ -560,7 +550,7 @@ require_once 'components/translations.php';
     <?php include 'components/footer.php'; ?>
 
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    <script src="assets/js/main.js"></script>
+    <script src="assets/js/main.js?v=20261101"></script>
 </body>
 
 </html>
